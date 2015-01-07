@@ -11,6 +11,29 @@ class Post_model extends MY_Model
     protected $date_format = 'datetime';
 
     //----------------------------------------------------------------
+
+    protected $validation_rules = array(
+        array(
+            'field' => 'title',
+            'label' => 'Title',
+            'rules' => 'trim|strip_tags|xss_clean'
+        ),
+        array(
+            'field' => 'slug',
+            'label' => 'Slug',
+            'rules' => 'trim|strip_tags|xss_clean'
+        ),
+        array(
+            'field' => 'body',
+            'label' => 'Body',
+            'rules' => 'trim|strip_tags|xss_clean'
+        )
+    );
+
+    protected $insert_validation_rules = array(
+        'title' => 'required',
+        'body'  => 'required'
+    );
 }
 
 ?>
